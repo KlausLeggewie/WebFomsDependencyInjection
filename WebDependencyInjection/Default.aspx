@@ -8,16 +8,61 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2>Look at my favorite products :)</h2>
-            <br/>
-
-            <asp:GridView runat="server" ID="grdProdcuts" ItemType="WebDependencyInjection.Repositories.Product"
-                          SelectMethod="Select" 
-                          CssClass="table table-hover table-striped" 
-                          UseAccessibleHeader="True"
-                          UseGridLines="None"
+            <h2>My favorite products :)</h2>
+            <br />
+            <p>
+                <asp:Label runat="server" id="lbOrderMessage"/>
+            </p>
+            <asp:ListView runat="server" ID="lvProducts" ItemType="WebDependencyInjection.Repositories.Product"
+                SelectMethod="Select"
+                          OnItemCommand="lvProducts_OnItemCommand"
                           >
-            </asp:GridView>
+                <LayoutTemplate>
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr class="d-flex">
+                                <th class="col-2">Product #</th>
+                                <th class="col-6">Name</th>
+                                <th class="col-2 text-right">Price</th>
+                                <th class="col-2">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tr runat="server" id="itemPlaceholder"></tr>
+                    </table>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr runat="server" class="d-flex">
+                        <td class="col-2">
+                            <%#: Item.ProductId %>
+                        </td>
+                        <td class="col-6">
+                            <%#: Item.ProductName %>
+                        </td>
+                        <td class="col-2 text-right">
+                            <%#: Item.Price %>
+                        </td>
+                        <td class="col-2">
+                            <asp:Button ID="Button1" runat="server" CausesValidation="false" CommandName="Order"
+                                Text="Order" CommandArgument="<%# Item.ProductId %>" />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:ListView>
+
+<%--            <asp:GridView runat="server" ID="grdProdcuts" ItemType="WebDependencyInjection.Repositories.Product"
+                SelectMethod="Select"
+                CssClass="table table-hover table-striped"
+                UseAccessibleHeader="True"
+                UseGridLines="None">
+                <Columns>
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="false" CommandName="Order"
+                                Text="Order" CommandArgument='<%# Item.ProductId %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>--%>
         </div>
     </div>
 
