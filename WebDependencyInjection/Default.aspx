@@ -48,21 +48,6 @@
                     </tr>
                 </ItemTemplate>
             </asp:ListView>
-
-<%--            <asp:GridView runat="server" ID="grdProdcuts" ItemType="WebDependencyInjection.Repositories.Product"
-                SelectMethod="Select"
-                CssClass="table table-hover table-striped"
-                UseAccessibleHeader="True"
-                UseGridLines="None">
-                <Columns>
-                    <asp:TemplateField ShowHeader="False">
-                        <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server" CausesValidation="false" CommandName="Order"
-                                Text="Order" CommandArgument='<%# Item.ProductId %>' />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>--%>
         </div>
     </div>
 
